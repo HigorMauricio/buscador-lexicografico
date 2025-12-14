@@ -28,4 +28,5 @@ typedef struct {
 }ListaDeLinhas;
 
 ListaDeLinhas* criar_lista(int capacidade);
+void adicionar_linha(ListaDeLinhas* lista, char* linhaLida);
 #endif

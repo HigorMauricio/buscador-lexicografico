@@ -35,3 +35,22 @@ ListaDeLinhas* criar_lista(int capacidade){
 
     return lista;
 }
+
+void adicionar_linha(ListaDeLinhas* lista, char* linhaLida){
+    if(lista->tamanho == lista->capacidade){
+        lista->capacidade *= 2;
+        char** nova_linhas = (char**)realloc(lista->linhas, lista->capacidade * sizeof(char*));
+        if(!nova_linhas) return;
+        lista->linhas = nova_linhas;
+    }
+
+    //criando uma copia da linha para armezana-la
+    char* copiaLinhaLida = (char*)malloc(strlen(linhaLida) + 1);
+    if(copiaLinhaLida){
+        strcpy(copiaLinhaLida, linhaLida);
+    }
+    if(!copiaLinhaLida) return;
+
+    lista->linhas[lista->tamanho] = copiaLinhaLida;
+    lista->tamanho ++;
+}
