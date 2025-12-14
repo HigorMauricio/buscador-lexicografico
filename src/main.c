@@ -24,15 +24,9 @@ int main(int argc, char ** argv){
 
 			printf("linha %03d: '%s'\n", contador_linha + 1, linha);
 
-			// fazemos uma copia do endereço que corresponde ao array de chars 
-			// usado para armazenar cada linha lida do arquivo pois a função 'strsep' 
-			// modifica o endereço do ponteiro a cada chamada feita a esta função (e 
-			// não queremos que 'linha' deixe de apontar para o inicio do array).
-
-			copia_ponteiro_linha = linha;
-
-			while( (palavra = strsep(&copia_ponteiro_linha, " ")) ){
-
+			// strtok modifica a string original, então não precisamos de uma cópia do ponteiro
+			palavra = strtok(linha, " ");
+			while (palavra != NULL) {
 				// antes de guardar a palavra em algum tipo de estrutura usada
 				// para implementar o índice, será necessário fazer uma copia
 				// da mesma, uma vez que o ponteiro 'palavra' aponta para uma 
@@ -40,7 +34,10 @@ int main(int argc, char ** argv){
 				// o conteúdo da linha anterior é sobreescrito.
 
 				printf("\t\t'%s'\n", palavra);
+				palavra = strtok(NULL, " ");
 			}
+
+            //precisamos tirar as virgulas!!!
 
 			contador_linha++;
 		}
