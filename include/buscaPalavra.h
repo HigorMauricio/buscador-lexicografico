@@ -17,6 +17,15 @@ enum Estruturas {
     arvore = 1
 };
 
-//normalização de palavras:
+//normalização de palavras
 char *normalizaString(char* palavra);
+
+//Lista Sequencial com as linhas
+typedef struct {
+    char**linhas;
+    int tamanho;
+    int capacidade;
+}ListaDeLinhas;
+
+ListaDeLinhas* criar_lista(int capacidade);
 #endif

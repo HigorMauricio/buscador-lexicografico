@@ -16,3 +16,22 @@ char *normalizaString(char* palavra){
 
     return palavra;
 }
+
+ListaDeLinhas* criar_lista(int capacidade){
+
+    ListaDeLinhas* lista = (ListaDeLinhas*)malloc(sizeof(ListaDeLinhas));
+    if(!lista){
+        free(lista);
+        return NULL;
+    }
+
+    lista->tamanho = 0;
+    lista->capacidade = capacidade;
+    lista->linhas = (char**)malloc(lista->capacidade * sizeof(char*));
+    if(!lista->linhas){
+        free(lista);
+        return NULL;
+    }
+
+    return lista;
+}
