@@ -12,6 +12,11 @@ enum Funcionalidades {
     busca = 1
 };
 
+enum Estruturas {
+    lista = 0,
+    arvore = 1
+};
+
 //normalização de palavras:
 char *normalizaString(char* palavra);
 #endif
