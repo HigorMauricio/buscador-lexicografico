@@ -8,13 +8,13 @@
 #define TAMANHO 10000
 
 enum Funcionalidades {
-    fim = 0,
-    busca = 1
+    FIM = 0,
+    BUSCA = 1
 };
 
 enum Estruturas {
-    lista = 0,
-    arvore = 1
+    LISTA = 0,
+    ARVORE = 1
 };
 
 //normalização de palavras
