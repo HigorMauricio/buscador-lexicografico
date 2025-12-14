@@ -45,14 +45,8 @@ int main(int argc, char ** argv){
 		printf(">>>>> Arquivo carregado!\n");
 
         //teste da lista com as linhas
-		for(int i=0; i<listaOrdenada->tamanho; i++){
-			printf("%s ", listaOrdenada->elementos[i]->palavra);
-		}
-
-		printf("\n total: %d", listaOrdenada->tamanho);
-
-
-		printf("\n Aparicoes de %s: %d", listaOrdenada->elementos[0]->palavra,listaOrdenada->elementos[0]->totalDeAparicoes);
+		int posicao = busca_binaria_ord(listaOrdenada, "algorithm", 0, listaOrdenada->tamanho);
+		printf("Palavra: %s, Quantidade de repeticao: %d\n", listaOrdenada->elementos[posicao]->palavra, listaOrdenada->elementos[posicao]->totalDeAparicoes);
 		return 0;
 	}
 
