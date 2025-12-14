@@ -60,6 +60,7 @@ ListaOrdenada* criar_lista_ordenada(int capacidade){
     if(!listaOrdenada) return NULL;
 
     listaOrdenada->tamanho = 0;
+    listaOrdenada->totaldecomparacoes = 0;
     listaOrdenada->capacidade = capacidade;
     listaOrdenada->elementos = (Palavra**)malloc(capacidade * sizeof(Palavra*));
     if(!listaOrdenada->elementos) return NULL;
@@ -91,6 +92,7 @@ void adiciona_palavra(ListaOrdenada* lista, char* palavraLida, int linhaAtual){
 
     int i;
     for(i=0; i<lista->tamanho; i++){
+        lista->totaldecomparacoes ++;
         Palavra* palavraAtual = lista->elementos[i];
         int comparacao = strcmp(palavraAtual->palavra, palavraLida);
         if(comparacao == 0){

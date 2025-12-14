@@ -51,6 +51,7 @@ typedef struct {
     Palavra** elementos;
     int tamanho;
     int capacidade;
+    int totaldecomparacoes;
 }ListaOrdenada;
 
 ListaOrdenada* criar_lista_ordenada(int capacidade);
