@@ -22,9 +22,6 @@ int main(int argc, char ** argv){
 			
 			if( (quebra_de_linha = strrchr(linha, '\n')) ) *quebra_de_linha = 0;
 
-			printf("linha %03d: '%s'\n", contador_linha + 1, linha);
-
-			// strtok modifica a string original, então não precisamos de uma cópia do ponteiro
 			palavra = strtok(linha, " ");
 			while (palavra != NULL) {
 				// antes de guardar a palavra em algum tipo de estrutura usada
@@ -33,11 +30,11 @@ int main(int argc, char ** argv){
 				// substring dentro da string 'linha', e a cada nova linha lida
 				// o conteúdo da linha anterior é sobreescrito.
 
+                //fazendo a normalização das palavras
+                
 				printf("\t\t'%s'\n", palavra);
 				palavra = strtok(NULL, " ");
 			}
-
-            //precisamos tirar as virgulas!!!
 
 			contador_linha++;
 		}
