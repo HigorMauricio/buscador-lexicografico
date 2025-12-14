@@ -37,6 +37,7 @@ int main(int argc, char ** argv){
 
 		printf(">>>>> Arquivo carregado!\n");
 
+        //teste da lista com as linhas
         for(int i=0; i<=lista->tamanho; i++){
             printf("linha %d: %s", i+1, lista->linhas[i]);
         }
