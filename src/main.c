@@ -22,13 +22,20 @@ int main(int argc, char ** argv){
             return 1;
         }
 
+		ListaOrdenada* listaOrdenada = criar_lista_ordenada(100);
+
 		while(in && fgets(linha, TAMANHO, in)){
             adicionar_linha(lista, linha);
 			if( (quebra_de_linha = strrchr(linha, '\n')) ) *quebra_de_linha = 0;
 
 			palavra = strtok(linha, " -/");
+
 			while (palavra != NULL) {
-				printf("\t\t'%s'\n", normalizaString(palavra));
+				char* palavraNormalizada = normalizaString(palavra);
+				if(palavraNormalizada && strlen(palavraNormalizada) > 0) {
+        			adiciona_palavra(listaOrdenada, palavraNormalizada, contador_linha);
+    			}
+
 				palavra = strtok(NULL, " -/");
 			}
 
@@ -38,9 +45,14 @@ int main(int argc, char ** argv){
 		printf(">>>>> Arquivo carregado!\n");
 
         //teste da lista com as linhas
-        for(int i=0; i<=lista->tamanho; i++){
-            printf("linha %d: %s", i+1, lista->linhas[i]);
-        }
+		for(int i=0; i<listaOrdenada->tamanho; i++){
+			printf("%s ", listaOrdenada->elementos[i]->palavra);
+		}
+
+		printf("\n total: %d", listaOrdenada->tamanho);
+
+
+		printf("\n Aparicoes de %s: %d", listaOrdenada->elementos[0]->palavra,listaOrdenada->elementos[0]->totalDeAparicoes);
 		return 0;
 	}
 
