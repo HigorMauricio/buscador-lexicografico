@@ -15,8 +15,6 @@ Arvore_AVL * cria_arvore(){
 
 void imprime_rec(No * no, char** linhas){
 
-	// percurso in-ordem para a impressão dos elementos
-
 	if(no){
 		imprime_rec(no->esq, linhas);
 		printf("Existem %d ocorrencias da palavra '%s' na(s) seguinte(s) linha(s): \n", no->valor.repeticoes, no->valor.palavra);

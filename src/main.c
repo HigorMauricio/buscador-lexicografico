@@ -2,6 +2,8 @@
 #include "AVL.c"
 #include "listaOrdenada.c"
 
+// feito por Julio Domingos, Higor Mauricio e Fernando Filho.
+
 void buscarPalavraAVL(Arvore_AVL* arvore, char** linhas, char* palavra){
 	int contador = 0;
 	No * resultado = busca_AVL(arvore, normalizaString(palavra), &contador);
@@ -9,6 +11,7 @@ void buscarPalavraAVL(Arvore_AVL* arvore, char** linhas, char* palavra){
 	if(resultado){
 		printf("Existem %d ocorrencias da palavra '%s' na(s) seguinte(s) linha(s): \n", resultado->valor.repeticoes, resultado->valor.palavra);
 		for(int i=0; i<resultado->valor.repeticoes; i++){
+            if(resultado->valor.ocorrencias[i] == resultado->valor.ocorrencias[i - 1]) continue;
 			printf("%05d: %s", resultado->valor.ocorrencias[i], linhas[resultado->valor.ocorrencias[i]-1]);
 		}
 		printf("Numero de comparacoes: %d\n", contador);
@@ -58,6 +61,7 @@ void buscarPalavraLista(ListaOrdenada* lista, char** linhas, char* palavra){
         Palavra* resultado = lista->elementos[indice];
 		printf("Existem %d ocorrencias da palavra '%s' na(s) seguinte(s) linha(s): \n", resultado->totalDeAparicoes, resultado->palavra);
 		for(int i=0; i<resultado->totalDeAparicoes; i++){
+            if(resultado->linhasDeAparicoes->linhas[i] == resultado->linhasDeAparicoes->linhas[i - 1]) continue;
 			printf("%05d: %s", resultado->linhasDeAparicoes->linhas[i], linhas[resultado->linhasDeAparicoes->linhas[i]-1]);
 		}
 		printf("Numero de comparacoes: %d\n", contador);
@@ -122,13 +126,13 @@ int main(int argc, char ** argv){
 
             while (in && fgets(linha, TAMANHO, in)) {
                 size_t len = strlen(linha);
-                // GARANTE que a linha termine com '\n'
+
                 if (len > 0 && linha[len - 1] != '\n') {
                     linha[len] = '\n';
                     linha[len + 1] = '\0';
                 }
 
-                adicionar_linha(lista, linha);  // salva com '\n'
+                adicionar_linha(lista, linha);
 
                 if ((quebra_de_linha = strrchr(linha, '\n'))) *quebra_de_linha = '\0';
 
@@ -144,7 +148,7 @@ int main(int argc, char ** argv){
             fclose(in);
             free(linha);
 
-            printf("Arquivo: '%s'\n", argv[1] + 2);
+            printf("Arquivo: '%s'\n", argv[1]);
             printf("Tipo de indice: '%s'\n", argv[2]);
             printf("Total de linhas no arquivo: %d\n", contador_linha);
             printf("Total de palavras unicas indexadas: %d\n", listaOrdenada->tamanho);
@@ -161,13 +165,13 @@ int main(int argc, char ** argv){
 
                 size_t len = strlen(linha);
 
-                // GARANTE que a linha termine com '\n'
+
                 if (len > 0 && linha[len - 1] != '\n') {
                     linha[len] = '\n';
                     linha[len + 1] = '\0';
                 }
 
-                adicionar_linha(lista, linha);  // salva com '\n'
+                adicionar_linha(lista, linha);
 
                 if ((quebra_de_linha = strrchr(linha, '\n'))) *quebra_de_linha = '\0';
 
@@ -184,7 +188,7 @@ int main(int argc, char ** argv){
             fclose(in);
             free(linha);
 
-            printf("Arquivo: '%s'\n", argv[1] + 2);
+            printf("Arquivo: '%s'\n", argv[1]);
             printf("Tipo de indice: '%s'\n", argv[2]);
             printf("Total de linhas no arquivo: %d\n", contador_linha);
             printf("Total de palavras unicas indexadas: %d\n", arvore->qtdpalavras);
