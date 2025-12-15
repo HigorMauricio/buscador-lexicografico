@@ -37,7 +37,7 @@ ListaDeLinhas* criar_lista(int capacidade){
 }
 
 void adicionar_linha(ListaDeLinhas* lista, char* linhaLida){
-    if(lista->tamanho == lista->capacidade){
+    if(lista->tamanho == lista->capacidade && linhaLida != NULL){
         lista->capacidade *= 2;
         char** nova_linhas = (char**)realloc(lista->linhas, lista->capacidade * sizeof(char*));
         if(!nova_linhas) return;
