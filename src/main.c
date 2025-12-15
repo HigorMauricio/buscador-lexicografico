@@ -1,4 +1,5 @@
 #include "buscaPalavra.h"
+#include "listaOrdenada.h"
 
 int main(int argc, char ** argv){
 
