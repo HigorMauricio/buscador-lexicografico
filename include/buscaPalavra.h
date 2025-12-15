@@ -6,6 +6,10 @@
 #include <ctype.h>
 
 #define TAMANHO 10000
+#define TOTALDEAPARICOES 100
+#define BOOL int
+#define TRUE 1
+#define FALSE 0
 
 enum Funcionalidades {
     FIM = 0,
@@ -29,4 +33,5 @@ typedef struct {
 
 ListaDeLinhas* criar_lista(int capacidade);
 void adicionar_linha(ListaDeLinhas* lista, char* linhaLida);
+
 #endif
