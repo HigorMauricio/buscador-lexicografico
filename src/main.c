@@ -46,7 +46,16 @@ int main(int argc, char ** argv){
 
         //teste da lista com as linhas
 		int posicao = busca_binaria_ord(listaOrdenada, "algorithm", 0, listaOrdenada->tamanho);
-		printf("Palavra: %s, Quantidade de repeticao: %d\n", listaOrdenada->elementos[posicao]->palavra, listaOrdenada->elementos[posicao]->totalDeAparicoes);
+		printf("Palavra: %s, Quantidade de repeticao: %d ", listaOrdenada->elementos[posicao]->palavra, listaOrdenada->elementos[posicao]->totalDeAparicoes);
+		printf("linhas que aparecem: ");
+		for(int i=0; i< listaOrdenada->elementos[posicao]->totalDeAparicoes; i++){
+			printf("%d ", listaOrdenada->elementos[posicao]->linhasDeAparicoes->linhas[i] + 1);
+		}
+		printf("\n");
+		for(int i=0; i< listaOrdenada->elementos[posicao]->totalDeAparicoes; i++){
+			printf("linha %d: %s", listaOrdenada->elementos[posicao]->linhasDeAparicoes->linhas[i] + 1, lista->linhas[listaOrdenada->elementos[posicao]->linhasDeAparicoes->linhas[i]]);
+		}
+		
 		return 0;
 	}
 
