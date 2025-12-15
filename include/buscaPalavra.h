@@ -57,5 +57,5 @@ typedef struct {
 ListaOrdenada* criar_lista_ordenada(int capacidade);
 void registrar_linha(Palavra* palavra, int linhaAtual);
 void adiciona_palavra(ListaOrdenada* lista, char* palavra, int linhaAtual);
-int busca_binaria_ord(ListaOrdenada* lista, char* palavraBuscada, int inicio, int fim);
+int busca_binaria_ord(ListaOrdenada* lista, char* palavraBuscada, int inicio, int fim, int *comparacoes);
 #endif

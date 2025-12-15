@@ -45,7 +45,8 @@ int main(int argc, char ** argv){
 		printf(">>>>> Arquivo carregado!\n");
 
         //teste da lista com as linhas
-		int posicao = busca_binaria_ord(listaOrdenada, "algorithm", 0, listaOrdenada->tamanho);
+		int comparacoes = 0;
+		int posicao = busca_binaria_ord(listaOrdenada, "algorithm", 0, listaOrdenada->tamanho, &comparacoes);
 		printf("Palavra: %s, Quantidade de repeticao: %d ", listaOrdenada->elementos[posicao]->palavra, listaOrdenada->elementos[posicao]->totalDeAparicoes);
 		printf("linhas que aparecem: ");
 		for(int i=0; i< listaOrdenada->elementos[posicao]->totalDeAparicoes; i++){
@@ -55,6 +56,7 @@ int main(int argc, char ** argv){
 		for(int i=0; i< listaOrdenada->elementos[posicao]->totalDeAparicoes; i++){
 			printf("linha %d: %s", listaOrdenada->elementos[posicao]->linhasDeAparicoes->linhas[i] + 1, lista->linhas[listaOrdenada->elementos[posicao]->linhasDeAparicoes->linhas[i]]);
 		}
+		printf("total de comp: %d", comparacoes);
 		
 		return 0;
 	}

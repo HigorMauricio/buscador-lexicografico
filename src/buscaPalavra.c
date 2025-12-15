@@ -132,20 +132,23 @@ void adiciona_palavra(ListaOrdenada* lista, char* palavraLida, int linhaAtual){
     lista->tamanho ++;
 }
 
-int busca_binaria_ord(ListaOrdenada* lista, char* palavraBuscada, int inicio, int fim){
+int busca_binaria_ord(ListaOrdenada* lista, char* palavraBuscada, int inicio, int fim, int *comparacoes){
     if(inicio <= fim){
         int meio = (inicio + fim)/2;
         if(strcmp(palavraBuscada, lista->elementos[meio]->palavra) == 0){
+            (*comparacoes) ++;
             return meio;
         }else if(strcmp(palavraBuscada, lista->elementos[meio]->palavra) > 0){
             inicio = meio + 1;
-            return busca_binaria_ord(lista, palavraBuscada, inicio, fim);
+            (*comparacoes) ++;
+            return busca_binaria_ord(lista, palavraBuscada, inicio, fim, comparacoes);
         }else if(strcmp(palavraBuscada, lista->elementos[meio]->palavra) < 0){
             fim = meio -1;
-            return busca_binaria_ord(lista, palavraBuscada, inicio, fim);
+            (*comparacoes)++;
+            return busca_binaria_ord(lista, palavraBuscada, inicio, fim, comparacoes);
         }
     }
-    
+
     return -1;
     
 }
