@@ -34,28 +34,4 @@ typedef struct {
 ListaDeLinhas* criar_lista(int capacidade);
 void adicionar_linha(ListaDeLinhas* lista, char* linhaLida);
 
-//Lista ordenada com as palavras
-typedef struct {
-    int* linhas;
-    int tamanho;
-    int capacidade;
-}ListaDeAparicoes;
-
-typedef struct {
-    char* palavra;
-    int totalDeAparicoes;
-    ListaDeAparicoes* linhasDeAparicoes;
-}Palavra;
-
-typedef struct {
-    Palavra** elementos;
-    int tamanho;
-    int capacidade;
-    int totaldecomparacoes;
-}ListaOrdenada;
-
-ListaOrdenada* criar_lista_ordenada(int capacidade);
-void registrar_linha(Palavra* palavra, int linhaAtual);
-void adiciona_palavra(ListaOrdenada* lista, char* palavra, int linhaAtual);
-int busca_binaria_ord(ListaOrdenada* lista, char* palavraBuscada, int inicio, int fim, int *comparacoes);
 #endif
